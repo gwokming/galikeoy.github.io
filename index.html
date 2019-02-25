@@ -1,209 +1,373 @@
-
 <!DOCTYPE html>
-<html lang="" class="loading">
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>keoy - keoy</title>
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="keywords" content="keoy,"> 
-    <meta name="description" content="keoy,"> 
-    <meta name="author" content="keoy"> 
-    <link rel="alternative" href="atom.xml" title="keoy" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.ico"> 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="keoy">
+  
+  
+    <meta name="description" content="keoy">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    keoy</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
 </head>
 </html>
-<body class="loading">
-    <div id="loader"></div>
-    <div class="nav">
-    <ul id="menu-menu" class="menu">
+<body>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+      <div class="video-frame">
+        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+      </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay loop muted data-autoplay="" poster="/images/ocean/ocean.png" x5-video-player-type="h5">
+        <source src="/images/ocean/ocean.mp4" type="video/mp4">
+        <source src="/images/ocean/ocean.ogv" type="video/ogg">
+        <source src="/images/ocean/ocean.webm" type="video/webm">
+        <p>Your user agent does not support the HTML5 Video element.</p>
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">keoy</a></h1>
+      <p>keoy</p>
+      <div><img src="/images/cover3.png" class="brand" alt="keoy"></div>
+    </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+  <article class="articles">
+    
+    <h1 class="page-type-title"></h1>
+
+    
+      
+        <article id="post-promiss" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
         
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="mailto:chenguoming@aliyun.com/" title="Email" target="_blank" rel="noopener">Email</a>
-        </li>
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/02/22/promiss/">Promise对象入门</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/02/22/promiss/" class="article-date">
+  <time datetime="2019-02-22T15:35:00.000Z" itemprop="datePublished">2019-02-22</time>
+</a>
         
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://github.com/galikeoy" title="Github" target="_blank" rel="noopener">Github</a>
-        </li>
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+  <div class="article-gallery">
+    <div class="article-gallery-photos">
+      
+        <a class="article-gallery-img fancybox" href="http://source.zhwangart.com/hexo/gallery/DCS_2539.jpg" rel="gallery_cjskdh7wj00054gkpkpsgspvr">
+          <img src="http://source.zhwangart.com/hexo/gallery/DCS_2539.jpg" itemprop="image">
+        </a>
+      
+    </div>
+  </div>
+
+      
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
+<p>promise对象可以获取异步操作的消息，提供统一的API,各个异步操作都可以用同样的方法进行处理。<br>promise对象不受外界影响，其有三种状态：<code>pending</code>（进行中）、<code>fulfilled</code>（成功）、<code>rejected</code>（失败），只有异步操作的结果可以决定当前状态，一旦状态改变就不可以再变化，状态改变方向有两种：<code>pending</code> -&gt; <code>fulfilled</code>、<code>pending</code> -&gt; <code>rejected</code><br>promise对象的意义就在于将异步操作以同步操作的流程表达，避免层层嵌套的回调函数  </p>
         
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://www.v2ex.com/member/galikeoy" title="V2EX" target="_blank" rel="noopener">V2EX</a>
-        </li>
+          <a class="article-more-link" href="/2019/02/22/promiss/">Read More...</a>
         
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        </li>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/02/22/promiss/" data-id="cjskdh7wj00054gkpkpsgspvr" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promiss/">promiss</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        <article id="post-bibao" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
         
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/2019/01/17/test/" title="About" target="_blank" rel="noopener">About</a>
-        </li>
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/02/22/bibao/">一道JS闭包面试题</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/02/22/bibao/" class="article-date">
+  <time datetime="2019-02-22T14:35:00.000Z" itemprop="datePublished">2019-02-22</time>
+</a>
         
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/tags/" title="Tags" target="_blank" rel="noopener">Tags</a>
-        </li>
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>最近看到这样一段代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">n,o</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(o);</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       fun:<span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span>&#123;</span><br><span class="line">           <span class="keyword">return</span> fun(m,n);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = fun(<span class="number">0</span>);a.fun(<span class="number">1</span>);a.fun(<span class="number">2</span>);a.fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> b = fun(<span class="number">0</span>).fun(<span class="number">1</span>).fun(<span class="number">2</span>).fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> c = fun(<span class="number">0</span>).fun(<span class="number">1</span>);c.fun(<span class="number">2</span>);c.fun(<span class="number">3</span>);</span><br><span class="line"><span class="comment">//问:三行a,b,c的输出分别是什么？</span></span><br></pre></td></tr></table></figure>
+<p>觉得有点意思，和大家一起来聊聊。<br>
         
+          <a class="article-more-link" href="/2019/02/22/bibao/">Read More...</a>
+        
+      
+    </p></div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/02/22/bibao/" data-id="cjskdh7w500004gkpn9uwnhc8" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/01/17/hello-world/">Hello World</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/01/17/hello-world/" class="article-date">
+  <time datetime="2019-01-17T15:16:21.298Z" itemprop="datePublished">2019-01-17</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
+        
+          <a class="article-more-link" href="/2019/01/17/hello-world/">Read More...</a>
+        
+      
+    </p></div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/01/17/hello-world/" data-id="cjskdh7wd00024gkpqg4bedbu" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        <article id="post-test" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/01/17/test/">welcome</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/01/17/test/" class="article-date">
+  <time datetime="2019-01-17T08:00:00.000Z" itemprop="datePublished">2019-01-17</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> _            _       _____      _          ___       _____       _          _       _____</span><br><span class="line">( )    /\    ( )     ( ____)    ( )        / _ \     (  _  )     ( )        ( )     ( ____)</span><br><span class="line"> \ \  /  \  / /      | |___     | |       | ( (_)    | | | |     |   \    /   |     | |___</span><br><span class="line">  \ \/    \/ /       |  ___)    | |       | |  _     | | | |     | |\ \  / /| |     |  ___)</span><br><span class="line">   \   /\   /        | |___     | |____   | (_( )    | |_| |     | | \ \/ / | |     | |___</span><br><span class="line">    \_/  \_/         (_____)    (______)   \___/     (_____)     (_)  \__/  (_)     (_____)</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-link" href="/2019/01/17/test/">Read More...</a>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/01/17/test/" data-id="cjskdh7wo00074gkppqyp8dbn" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/welcome/">welcome</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+  </article>
+  
+  
+</section>
+</div>
+
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 keoy</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by <a href="https://github.com/zhwangart/hexo-theme-ocean">ocean</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
     </ul>
-    <p id="copyright">
-        &copy; 2019 keoy.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a>
-        by Fechin
-    </p>
-</div>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
 
-<div id="container">
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/cover3.png" alt="keoy"></a>
+    </div>
+  
+  <ul class="nav nav-main">
     
-<div id="screen">
-    <div id="mark">
-        <div class="layer" data-depth="0.4">
-            <img src="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
-        </div>
-    </div>
-    <div id="vibrant">
-        <svg viewbox="0 0 2880 1620" height="100%" preserveaspectratio="xMaxYMax slice">
-            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-        </svg>
-        <div></div>
-    </div>
-    <div id="header">
-        <div>
-            <img class="my-logo" src="/img/avatar.png">
-            <a class="image-logo" href="/"></a>
-            <div class="icon-menu switchmenu"></div>
-        </div>
-    </div>
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
     
-    <div id="post0">
-        <p>二月 22, 2019</p>
-        <h2><a href="/2019/02/22/promiss/" title="Promise对象入门" class="posttitle">Promise对象入门</a></h2>
-        <p class="summary">简介
-promise对象可以获取异步操作的消息，提供统一的API,各个异步操作都可以用同样的方法进行处理。prom...</p>
-    </div>
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
     
-</div>
-
-    <div id="primary">
-        
-<div class="post">
-    <a href="/2019/02/22/bibao/" title="一道JS闭包面试题">
-        <img src="/img/asda.png" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>二月 22, 2019</p>
-        <h3><a href="/2019/02/22/bibao/" title="一道JS闭包面试题" class="posttitle">一道JS闭包面试题</a></h3>
-        <p>说明最近看到这样一段代码
-12345678910111213function fun(n,o)&#123;   console.log(o);   ret...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2019/01/17/hello-world-1/" title="hello world">
-        <img src="/img/cover.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>一月 17, 2019</p>
-        <h3><a href="/2019/01/17/hello-world-1/" title="hello world" class="posttitle">hello world</a></h3>
-        <p></p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2019/01/17/hello-world/" title="Hello World">
-        <img src="/img/cover.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>一月 17, 2019</p>
-        <h3><a href="/2019/01/17/hello-world/" title="Hello World" class="posttitle">Hello World</a></h3>
-        <p>Welcome to Hexo! This is your very first post. Check documentation for more i...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2019/01/17/test/" title="welcome">
-        <img src="/img/cover.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>一月 17, 2019</p>
-        <h3><a href="/2019/01/17/test/" title="welcome" class="posttitle">welcome</a></h3>
-        <p>123456 _            _       _____      _          ___       _____       _    ...</p>
-    </div>
-</div>
-
-
-    </div>
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
     
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
 </div>
-<div id="preview"></div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
 
 </body>
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/diaspora.js"></script>
-<script src="/js/md5.min.js"></script>
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
 </html>
