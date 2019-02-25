@@ -158,4 +158,34 @@
     $sidebar.removeClass('on');
   });
 
+  var _url = window.location.href;
+  var _now = new Date(); 
+  if(_url.indexOf("about") >= 0 ) { //判断url地址中是否包含about字符串
+    var div = document.createElement("div")
+    var parent = document.querySelector("#page-")
+    div.style.cssText = 'color: #666;padding:25px 0 0'
+    parent.appendChild(div)
+    setInterval(function(){
+      div.innerHTML = '本站已经苟活 ' + runTime()
+    },1000)
+  }
+  function runTime(){
+    var d = new Date(),str = '';
+    BirthDay=new Date("November 17,2018");
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    msPerYear=365*24*60*60*1000
+    e_daysold=timeold/msPerDay
+    e_yearsold=timeold/msPerYear
+    daysold=Math.floor(e_daysold);
+    yearsold=Math.floor(e_yearsold);
+    str = daysold+"天 ";
+    str += d.getHours()+'时 ';
+    str  += d.getMinutes()+'分 ';
+    str+= d.getSeconds()+'秒 ';
+    return str;
+  }
 })(jQuery);
