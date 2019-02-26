@@ -2,7 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="fkuaDQoq7Q">
+  <meta name="baidu-site-verification" content="hoGaEDE0Fk">
   
   
     <meta name="keywords" content="keoy">
@@ -34,7 +34,7 @@
       </div>
     
     <div class="video-media">
-      <video playsinline="" autoplay loop muted data-autoplay="" poster="/images/ocean/ocean.png" x5-video-player-type="h5">
+      <video playsinline autoplay loop muted data-autoplay poster="/images/ocean/ocean.png" x5-video-player-type="h5">
         <source src="/images/ocean/ocean.mp4" type="video/mp4">
         <source src="/images/ocean/ocean.ogv" type="video/ogg">
         <source src="/images/ocean/ocean.webm" type="video/webm">
@@ -61,7 +61,7 @@
 
     
       
-        <article id="post-promiss" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-promiss" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -89,22 +89,7 @@
       
       
       
-        <div class="tocStart"></div>
-
-<!-- toc -->
-<ul>
-<li><a href="#mu-lu">目录</a><ul>
-<li><a href="#jian-jie">简介</a></li>
-<li><a href="#ji-ben-yong-fa">基本用法</a></li>
-<li><a href="#catch">catch</a></li>
-<li><a href="#finally">finally</a></li>
-<li><a href="#all">all</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<div class="tocEnd"></div>
-
+        <!-- toc -->
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
 <p>promise对象可以获取异步操作的消息，提供统一的API,各个异步操作都可以用同样的方法进行处理。<br>promise对象不受外界影响，其有三种状态：<code>pending</code>（进行中）、<code>fulfilled</code>（成功）、<code>rejected</code>（失败），只有异步操作的结果可以决定当前状态，一旦状态改变就不可以再变化，状态改变方向有两种：<code>pending</code> -&gt; <code>fulfilled</code>、<code>pending</code> -&gt; <code>rejected</code><br>promise对象的意义就在于将异步操作以同步操作的流程表达，避免层层嵌套的回调函数  </p>
         
@@ -113,7 +98,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://keoy.xyz/2019/02/22/promiss/" data-id="cjskkwluj0002tkkp843umltu" class="article-share-link">Share</a>
+      <a data-url="https://keoy.xyz/2019/02/22/promiss/" data-id="cjsm1w9440007wkkp4l8e74q2" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promiss/">promiss</a></li></ul>
 
@@ -130,7 +115,7 @@
 
 
       
-        <article id="post-bibao" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-bibao" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -158,22 +143,7 @@
       
       
       
-        <div class="toc-ulStart"></div>
-
-<!-- toc -->
-<ul>
-<li><a href="#haha">haha</a><ul>
-<li><a href="#sd">sd</a><ul>
-<li><a href="#shuo-ming">说明</a></li>
-<li><a href="#jie-shi">解释</a></li>
-<li><a href="#zong-jie">总结</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<p><div class="toc-ulEnd"></div></p>
+        <!-- toc -->
 <h1 id="haha"><a href="#haha" class="headerlink" title="haha"></a>haha</h1><h2 id="sd"><a href="#sd" class="headerlink" title="sd"></a>sd</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>最近看到这样一段代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">n,o</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(o);</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       fun:<span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span>&#123;</span><br><span class="line">           <span class="keyword">return</span> fun(m,n);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = fun(<span class="number">0</span>);a.fun(<span class="number">1</span>);a.fun(<span class="number">2</span>);a.fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> b = fun(<span class="number">0</span>).fun(<span class="number">1</span>).fun(<span class="number">2</span>).fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> c = fun(<span class="number">0</span>).fun(<span class="number">1</span>);c.fun(<span class="number">2</span>);c.fun(<span class="number">3</span>);</span><br><span class="line"><span class="comment">//问:三行a,b,c的输出分别是什么？</span></span><br></pre></td></tr></table></figure>
 <p>觉得有点意思，和大家一起来聊聊。<br>
@@ -183,7 +153,7 @@
       
     </p></div>
     <footer class="article-footer">
-      <a data-url="https://keoy.xyz/2019/02/22/bibao/" data-id="cjskkwluc0000tkkpfx3exqvv" class="article-share-link">Share</a>
+      <a data-url="https://keoy.xyz/2019/02/22/bibao/" data-id="cjsm1w93l0000wkkpoytrk7oe" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
 
@@ -200,7 +170,7 @@
 
 
       
-        <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -228,21 +198,7 @@
       
       
       
-        <div class="toc-ulStart"></div>
-
-<!-- toc -->
-<ul>
-<li><a href="#quick-start">Quick Start</a><ul>
-<li><a href="#create-a-new-post">Create a new post</a></li>
-<li><a href="#run-server">Run server</a></li>
-<li><a href="#generate-static-files">Generate static files</a></li>
-<li><a href="#deploy-to-remote-sites">Deploy to remote sites</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<div class="toc-ulEnd"></div>
-
+        <!-- toc -->
 <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
         
           <a class="article-more-link" href="/2019/01/17/hello-world/">Read More...</a>
@@ -250,7 +206,7 @@
       
     </p></div>
     <footer class="article-footer">
-      <a data-url="https://keoy.xyz/2019/01/17/hello-world/" data-id="cjskkwlus0005tkkp7fb3327o" class="article-share-link">Share</a>
+      <a data-url="https://keoy.xyz/2019/01/17/hello-world/" data-id="cjsm1w93s0002wkkp4s8mbsn3" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
@@ -267,7 +223,7 @@
 
 
       
-        <article id="post-test" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -295,12 +251,7 @@
       
       
       
-        <div class="toc-ulStart"></div>
-
-<!-- toc -->
-<!-- tocstop -->
-<div class="toc-ulEnd"></div>
-
+        <!-- toc -->
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> _            _       _____      _          ___       _____       _          _       _____</span><br><span class="line">( )    /\    ( )     ( ____)    ( )        / _ \     (  _  )     ( )        ( )     ( ____)</span><br><span class="line"> \ \  /  \  / /      | |___     | |       | ( (_)    | | | |     |   \    /   |     | |___</span><br><span class="line">  \ \/    \/ /       |  ___)    | |       | |  _     | | | |     | |\ \  / /| |     |  ___)</span><br><span class="line">   \   /\   /        | |___     | |____   | (_( )    | |_| |     | | \ \/ / | |     | |___</span><br><span class="line">    \_/  \_/         (_____)    (______)   \___/     (_____)     (_)  \__/  (_)     (_____)</span><br></pre></td></tr></table></figure>
         
           <a class="article-more-link" href="/2019/01/17/test/">Read More...</a>
@@ -308,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://keoy.xyz/2019/01/17/test/" data-id="cjskkwluu0007tkkp3mmtcg4l" class="article-share-link">Share</a>
+      <a data-url="https://keoy.xyz/2019/01/17/test/" data-id="cjsm1w9420005wkkpm2b9j3mx" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/welcome/">welcome</a></li></ul>
 
