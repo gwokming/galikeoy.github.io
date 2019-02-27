@@ -26,7 +26,7 @@
 </html>
 <body>
 <main class="content">
-  <section class="jumbotron">
+    <section class="jumbotron">
   <div class="video">
     
       <div class="video-frame">
@@ -144,7 +144,7 @@
       
         <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>最近看到这样一段代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">n,o</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(o);</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       fun:<span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span>&#123;</span><br><span class="line">           <span class="keyword">return</span> fun(m,n);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = fun(<span class="number">0</span>);a.fun(<span class="number">1</span>);a.fun(<span class="number">2</span>);a.fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> b = fun(<span class="number">0</span>).fun(<span class="number">1</span>).fun(<span class="number">2</span>).fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> c = fun(<span class="number">0</span>).fun(<span class="number">1</span>);c.fun(<span class="number">2</span>);c.fun(<span class="number">3</span>);</span><br><span class="line"><span class="comment">//问:三行a,b,c的输出分别是什么？</span></span><br></pre></td></tr></table></figure>
-<p>觉得有点意思，和大家一起来聊聊。<br>
+<p>觉得有点意思，和大家一起来聊聊。<br>我相信如果你不是非常理解JavaScript中的闭包，一定是不想看这段代码的。<br>
         
           <a class="article-more-link" href="/2019/02/22/bibao/">Read More...</a>
         
@@ -278,7 +278,7 @@
 </section>
 </div>
 
-  <footer class="footer">
+    <footer class="footer">
   
   <div class="outer">
     <ul class="list-inline">
@@ -288,6 +288,9 @@
       <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
       <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
     </ul>
+  </div>
+  <div class="top-class">
+    <i class="fe fe-upload"></i>
   </div>
 </footer>
 </main>

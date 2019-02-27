@@ -157,6 +157,27 @@
     $content.removeClass('on');
     $sidebar.removeClass('on');
   });
+// click top
+  $(".top-class").on("click",function (){
+      $('html,body').animate({'scrollTop': 0})
+      // $(document).scrollTop(0)
+  })
+
+//锚点滚动 
+  $('a[href*=#],area[href*=#]').click(function() {
+   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var $target = $(this.hash);
+      $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+      if ($target.length) {
+         var targetOffset = $target.offset().top;
+         $('html,body').animate({
+               scrollTop: targetOffset
+            },
+            500);
+         return false;
+      }
+   }
+});
 
   var _url = window.location.href;
   var _now = new Date(); 
