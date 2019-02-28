@@ -1129,6 +1129,17 @@ body {
     width: 51rem;
   }
 }
+@media (min-width: 1200px) {
+  .wrap,
+  .outer {
+    width: 70rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .local-search {
+    width: 70rem;
+  }
+}
 .list-unstyled,
 .list-inline {
   list-style: none;
@@ -2069,6 +2080,10 @@ pre .javascript .function {
 }
 .navbar .nav.nav-main .nav-item:nth-child(4) .nav-item-link::before {
   content: '\f174';
+}
+.navbar .nav.nav-main .nav-item:nth-child(5) .nav-item-link::before {
+  content: '\f17e';
+  font-size: 2.1rem;
 }
 .navbar-bottom {
   position: absolute;
