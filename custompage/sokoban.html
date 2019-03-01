@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/** {
+		margin: 0;
+		padding: 0;
+	}*/
+	#box {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		flex-direction: column;
+		width: 560px;
+		margin: 40px auto 0;
+	}
+	#wrap {
+		position: relative;
+		
+	}
+	.item {
+		width: 35px;
+		height: 35px;
+		position: absolute;
+	}
+	.item img{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		margin-top: -7px;
+	}
+	#wrap .person {
+		z-index: 2;
+	}
+	#wrap .person img{
+		margin-top: -17px;
+	}
+	#button {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	#button p {
+		width: 100%;
+		margin: 10px 0;
+		text-align: center;
+		
+	}
+	#button button{
+		margin: 0 20px;
+	}
+	#button div {
+		width: 100%;
+		margin: 20px auto;
+		text-align: center;
+		
+	}
+	#button input {
+		width: 40%;
+	}
+</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script src="/js/mapdata100.js"></script>
+	<!--mapdata100.js中的数组变量是levels-->
+	<script>
+		window.onload =function(){
+			const box = document.getElementById('box');
+			var mygame = new game();
+			mygame.start(box);
+		}
+		var game = function(){}
+		game.prototype = {
+			variable: {
+				x: 16,//坐标
+				y: 16,//坐标
+				data:levels,//关卡数据
+				person: null,//人物
+				wrap: null,//地图盒子
+				buttonDiv: null,//按钮盒子
+				box: null,//传进来的盒子  /也就是父盒子
+				level: 0,//第几关
+				passNum: 0,//通关次数
+				stepNum: 0//步数统计
+			},
+			//历史移动储存 用来返回上一步
+			step:{
+				person: [],
+				box: []
+			},
+			//开始
+			start:function (box){
+				var wrap = document.createElement("div");
+				var button = document.createElement("div");
+				this.variable.wrap = wrap;
+				this.variable.wrap.id = 'wrap';
+				this.variable.box = box;
+				this.variable.buttonDiv = button;
+				this.variable.buttonDiv.id = 'button';
+				this.variable.box.appendChild(this.variable.wrap);
+				this.variable.box.appendChild(this.variable.buttonDiv);
+				this.init();
+
+			},
+			//地图初始化
+			init: function (){
+				this.variable.wrap.innerHTML = '';//清空地图
+				this.variable.wrap.style.cssText = 'background:url(/images/sokoban/block.gif);' + 'width:'+ this.variable.x * 35  +'px;' + 'height:'+ this.variable.y * 35  +'px;';//布置地图
+				for(let k in this.variable.data[this.variable.level]){//根据关卡循环游戏资源布置建筑
+					switch(this.variable.data[this.variable.level][k]){
+						//树
+						case 1:
+							this.createBasic('wall',k);
+							break;
+						//球
+						case 2:
+							this.createBasic('ball',k);
+							break;
+						//箱子
+						case 3:
+							this.createBasic('box',k);
+							break;
+						//人物
+						case 4:
+							this.createBasic('down',k);
+							break;
+					}
+				}
+
+				this.controlPerson(this.variable.person);//人物移动控制
+				this.createButton();//创建按钮
+			},
+			//创建建筑
+			createBasic: function (type,k){
+				var Odiv = document.createElement("div");
+				var Oimg = new Image();
+				var y = parseInt(k/this.variable.x);//商/即是y轴
+				var x = parseInt(k%this.variable.y);//余数即是x轴
+
+				if(type == "down"){
+					Odiv.className = 'item '+ "person";//人物给类
+					this.variable.person = Odiv;//人物存储
+				}else {
+					Odiv.className = 'item '+ type;//type给类
+				}
+
+				Oimg.src = '/images/sokoban/' + type + '.png';//src
+				Odiv.x = x;//自定义属性，即元素存储坐标轴 也是用来判断人物/箱子/树/球之间的关系 也是思路的核心
+				Odiv.y = y;
+				Odiv.style.cssText = 'left: '+ x*35+ 'px;top:' + y * 35 + 'px;z-index:' + (y*this.variable.x) +';';//坐标轴定义位置，z-index是为了上下层级(优化细节)/y越大的层级越高
+				Odiv.appendChild(Oimg);
+				this.variable.wrap.appendChild(Odiv);
+			},
+			//创建按钮
+			createButton:function (){
+
+				this.variable.buttonDiv.innerHTML = '';//清空按钮组
+				var _this = this;//点击事件要用的this变量  这里不懂得百度一下函数作用域和this指向
+
+				var p = document.createElement("p");
+				var next = document.createElement("button");
+				var prev = document.createElement("button");
+				var again = document.createElement("button");
+				var Prev_step = document.createElement("button");
+				var input_div = document.createElement("div");
+				var jump = document.createElement("button");
+				var text = document.createElement("input");
+
+				text.placeholder = 'Please enter 1~100 ';
+				text.type = 'number';
+				input_div.appendChild(text);
+				input_div.appendChild(jump);
+				p.innerHTML = (this.variable.level+1) + 'level';
+				prev.innerHTML = 'prev level';
+				next.innerHTML = 'next level';
+				again.innerHTML = 'again';
+				Prev_step.innerHTML = 'Prev step';
+				jump.innerHTML = 'Level skip';
+
+				this.variable.buttonDiv.appendChild(p);
+				this.variable.buttonDiv.appendChild(input_div);
+				this.variable.buttonDiv.appendChild(prev);
+				this.variable.buttonDiv.appendChild(next);
+				this.variable.buttonDiv.appendChild(again);
+				this.variable.buttonDiv.appendChild(Prev_step);
+				prev.onclick = function (){
+					_this.variable.level --;//关卡-1
+					if(_this.variable.level < 0){
+						_this.variable.level = 0;
+					}
+					_this.init();//重新布置地图
+				}
+				next.onclick = function (){
+					_this.variable.level ++;//关卡+1
+					if(_this.variable.level > 99){
+						_this.variable.level = 99;
+					}
+					_this.init();//重新布置地图
+				}
+				again.onclick = function (){
+					_this.init();//重新布置地图
+				}
+				Prev_step.onclick = function (){
+					_this.prev(_this);//退回上一步 传入_this
+				}
+				text.onkeyup = function (){//关卡跳转验证
+					var reg = new RegExp("^([1-9]|[1-9]\\d|100)$");
+					    if(!reg.test(this.value)){
+					        alert("请输入1-100的整数！")
+					        this.value = ''
+					    }
+				}
+				jump.onclick = function (){//关卡跳转
+					if(!text.value == '' || !text.value == null){
+						_this.variable.level = text.value
+						_this.variable.level = parseInt(_this.variable.level)
+						_this.variable.level--//不知道为什么关卡+1了，这里需要-1 //我也想不明白
+						_this.init()//重新布置地图
+					}
+				}
+
+			},
+			//人物控制
+			controlPerson: function (p){
+				var img = p.firstElementChild;//div下的图片
+				var _this = this; //键盘事件要用的this变量
+
+				document.onkeydown = function (ev){
+
+					ev = ev || window.event;
+					var keycode = ev.keyCode;
+					_this.step.person[_this.variable.stepNum] = {}//定义人物历史移动数据对象
+					_this.step.person[_this.variable.stepNum].src = _this.variable.person.firstElementChild.src;//人物历史移动朝向
+
+					switch(keycode){
+						//left
+						case 37:
+							img.src = '/images/sokoban/left.png';
+							_this.movePerson({x:-1},p);//传入x-1，即坐标轴x-1，向左移动一步 下面同理
+							break;
+						//up
+						case 38:
+							img.src = '/images/sokoban/up.png';
+							_this.movePerson({y:-1},p);//传入y-1，即坐标轴y-1，向上移动一步 下面同理
+
+							break;
+						//right
+						case 39:
+							img.src = '/images/sokoban/right.png';
+							_this.movePerson({x:1},p);
+
+							break;
+						//down
+						case 40:
+							img.src = '/images/sokoban/down.png';
+							_this.movePerson({y:1},p);
+
+							break;
+					}
+				}
+			},
+			//人物移动
+			movePerson: function (obj,el){
+				var x = obj.x || 0;
+				var y = obj.y || 0;
+				var k = this.variable.data[this.variable.level][ (el.x+x) + (el.y+y) * this.variable.x ]; //当前数据  
+				//(el.x+x) + (el.y+y) * this.variable.x为下标
+				var box = this.variable.wrap.querySelectorAll(".box");
+
+				if(k != 1){//如果人物没撞上树 移动
+
+					//存储上一步
+					this.step.person[this.variable.stepNum].x = el.x;
+					this.step.person[this.variable.stepNum].y = el.y;
+
+					//人物移动
+					el.x += x;
+					el.y += y;
+					el.style.left = el.x * 35 + 'px';
+					el.style.top = el.y * 35 + 'px';
+					el.style.zIndex = el.x + el.y * this.variable.x;
+					//移动结束
+
+					this.variable.stepNum ++;//移动步数+1
+
+					for (var i = box.length - 1; i >= 0; i--) {
+
+						if(box[i].x == el.x && box[i].y == el.y){//人物移动后 人物与箱子的x，y相等 即人物撞上箱子
+
+							if(this.variable.data[this.variable.level][ (box[i].x+x) + (box[i].y+y) * this.variable.x ] != 1){//如果箱子没撞上树
+								//上面的(box[i].x+x) + (box[i].y+y) * this.variable.x 就是箱子在数据中的下标 
+
+								if(this.collision(box[i],x,y)){//判断箱子之间的碰撞 没用碰撞执行
+
+									this.step.box[this.variable.stepNum-1] = {};//定义箱子的第·移动步数·个的对象 前面+1了，这里要-1 才是原来的步数
+									this.step.box[this.variable.stepNum-1].index = i;//箱子有未知个 要存储未知个箱子的上一步，就有未知个对象 存入this.step.box  也就是i个箱子
+
+									this.step.box[this.variable.stepNum-1].x = box[i].x;//上一步存入
+									this.step.box[this.variable.stepNum-1].y = box[i].y;
+
+									//箱子移动
+									box[i].x += x;
+									box[i].y += y;
+									box[i].style.left = box[i].x * 35 + 'px';
+									box[i].style.top = box[i].y * 35 + 'px';
+									box[i].style.zIndex = box[i].x + box[i].y * this.variable.x;
+									//移动结束
+
+									this.pass();//每一次箱子移动后 需要验证是否过关
+
+								}else {//箱子碰到箱子  箱子不做操作  但是上面人物已经移动 这里就需要把人还原 也就是坐标各-1
+
+									//人物移动
+									el.x -= x;
+									el.y -= y;
+									el.style.left = el.x * 35 + 'px';
+									el.style.top = el.y * 35 + 'px';
+									el.style.zIndex = el.x + el.y * this.variable.x;
+									//移动结束
+
+									this.variable.stepNum --;//移动步数-1
+									this.step.person.pop();//上面人物移动前已经存储了历史移动  这里人物需要还原了 历史移动数组就得减去最后一个对象
+
+								}
+
+							}else {//如果箱子撞上树 箱子不做操作  但是上面人物已经移动 这里就需要把人还原 也就是坐标各-1
+
+								el.x -= x;//这里跟上面一样  还原
+								el.y -= y;
+								el.style.left = el.x * 35 + 'px';
+								el.style.top = el.y * 35 + 'px';
+								el.style.zIndex = el.x + el.y * this.variable.x;
+								this.variable.stepNum --;
+								this.step.person.pop();
+
+							}
+						}
+					}
+				}
+			},
+			//箱子与箱子的碰撞
+			collision: function (el,x,y){ //传入得值分别是 box[i]第i个箱子,移动的x值,移动的y值(也就是this.movePerson中的x,y)
+				var box = this.variable.wrap.querySelectorAll(".box");//所有的箱子
+				for (var i = box.length - 1; i >= 0; i--) { //循环所有箱子
+
+					if(box[i] != el){//两个箱子是不是同一个
+
+						if(box[i].x == el.x+x && box[i].y == el.y+y){//下一步的坐标与一个箱子的坐标相等，也就是说两个箱子有重合， 返回false
+
+							return false;
+
+						}
+
+					}
+
+				}
+				//下一步的坐标与一个箱子的坐标不相等，也就是说两个箱子不重合， 返回true
+				return true
+			},
+			//过关检测
+			pass: function (){
+				var box = this.variable.wrap.querySelectorAll(".box");//箱子
+				var ball = this.variable.wrap.querySelectorAll(".ball");//球
+				var ballNum = 0;//箱子有未知个 要计数
+				for (var i = box.length - 1; i >= 0; i--) {
+					for (var g = ball.length - 1; g >= 0; g--) {
+						if(box[i].x == ball[g].x && box[i].y == ball[g].y){//箱子和球的坐标相等 则成功的箱子+1
+							ballNum ++;
+						}
+					}
+				}
+				if(ballNum == ball.length){//成功的箱子个数等于球的个数  游戏过关
+					alert("success");
+					this.variable.level ++;//成功后关卡+1
+					this.init();//重置地图 进入下一关
+				}
+			},
+			//上一步
+			prev: function (_this){
+				var w_box = _this.variable.wrap.querySelectorAll(".box");//所有箱子
+				if(_this.variable.stepNum != 0){//移动步数不等于0
+
+					_this.variable.person.x = _this.step.person[_this.variable.stepNum-1].x;//返回上一步 移动步数-1 赋值人物坐标
+					_this.variable.person.y = _this.step.person[_this.variable.stepNum-1].y;
+
+					_this.variable.person.style.left = _this.variable.person.x * 35 + 'px';//人物坐标退回上一步
+					_this.variable.person.style.top = _this.variable.person.y * 35 + 'px';
+
+					_this.variable.person.style.zIndex = _this.variable.person.x + _this.variable.person.y * _this.variable.x;//层级也要重新赋值
+					_this.variable.person.firstElementChild.src = _this.step.person[_this.variable.stepNum-1].src;//人物朝向更改
+
+					if(_this.step.box[_this.variable.stepNum-1]){//箱子与人物的移动步数不一样 另外判断 是否存在
+
+						var box_i = w_box[_this.step.box[_this.variable.stepNum-1].index]//第i个box  也就是箱子移动时储存的i
+
+						box_i.x = _this.step.box[_this.variable.stepNum-1].x;//返回上一步 移动步数-1 赋值箱子坐标
+						box_i.y = _this.step.box[_this.variable.stepNum-1].y;
+
+						box_i.style.left = box_i.x * 35 + 'px';//人物坐标退回上一步
+						box_i.style.top = box_i.y * 35 + 'px';
+					}
+					_this.variable.stepNum--;//返回上一步后 移动步数-1
+				}
+			}
+			
+		}
+	</script>
+</body>
+</html>
