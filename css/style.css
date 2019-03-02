@@ -1223,14 +1223,20 @@ body {
 .search-form-wrap {
   position: fixed;
   top: -100%;
-  right: 10rem;
-  left: 0;
+  left: 10rem;
+  right: 0;
   opacity: 0;
   transition: 0.3s;
 }
 .search-form-wrap.on {
   top: 0;
   opacity: 1;
+}
+@media (max-width: 576px) {
+  .search-form-wrap {
+    right: 10rem;
+    left: 0;
+  }
 }
 .local-search {
   position: relative;
