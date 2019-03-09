@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://keoy.xyz/2019/02/22/promise/</loc>
+    
+    <lastmod>2019-03-09T11:25:00.919Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://keoy.xyz/2019/03/06/npm_eroor/</loc>
     
     <lastmod>2019-03-09T06:38:54.925Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://keoy.xyz/2018/11/20/test/</loc>
     
     <lastmod>2019-03-01T16:52:47.817Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://keoy.xyz/2019/02/22/promiss/</loc>
-    
-    <lastmod>2019-03-01T16:21:14.772Z</lastmod>
     
   </url>
   

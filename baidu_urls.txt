@@ -1,5 +1,5 @@
 https://keoy.xyz/2019/03/06/npm_eroor/
-https://keoy.xyz/2019/02/22/promiss/
+https://keoy.xyz/2019/02/22/promise/
 https://keoy.xyz/2019/02/22/bibao/
 https://keoy.xyz/2018/11/24/Sokoban/
 https://keoy.xyz/2018/11/20/test/
