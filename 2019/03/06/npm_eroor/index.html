@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    welcome |
+    npm采踩坑系列 |
     
     keoy</title>
   
@@ -28,7 +28,7 @@
 <body>
 <main class="content">
     <section class="outer">
-  <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <article id="post-npm_eroor" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -36,7 +36,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      welcome
+      npm采踩坑系列
     </h1>
   
 
@@ -45,30 +45,35 @@
 
     
       <div class="article-meta">
-        <a href="/2018/11/20/test/" class="article-date">
-  <time datetime="2018-11-20T12:12:00.000Z" itemprop="datePublished">2018-11-20</time>
+        <a href="/2019/03/06/npm_eroor/" class="article-date">
+  <time datetime="2019-03-05T16:11:00.000Z" itemprop="datePublished">2019-03-06</time>
 </a>
         
       </div>
     
     
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/welcome/">welcome</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
 
     <div class="article-entry" itemprop="articleBody">
       
       
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> _            _       _____      _          ___       _____       _          _       _____</span><br><span class="line">( )    /\    ( )     ( ____)    ( )        / _ \     (  _  )     ( )        ( )     ( ____)</span><br><span class="line"> \ \  /  \  / /      | |___     | |       | ( (_)    | | | |     |   \    /   |     | |___</span><br><span class="line">  \ \/    \/ /       |  ___)    | |       | |  _     | | | |     | |\ \  / /| |     |  ___)</span><br><span class="line">   \   /\   /        | |___     | |____   | (_( )    | |_| |     | | \ \/ / | |     | |___</span><br><span class="line">    \_/  \_/         (_____)    (______)   \___/     (_____)     (_)  \__/  (_)     (_____)</span><br></pre></td></tr></table></figure>
-<a id="more"></a> 
+        <h2><a href="#qian-yan" class="header-anchor">#</a><span id="qian-yan">前言</span></h2><p>这几天想给添加一点东西，于是就用npm安装了一个插件，然后就提示出错了 来踩坑了<br><a id="more"></a></p>
 <div class="toc-ul">
 
 <!-- toc -->
+<ul>
+<li><a href="#cuo-wu">错误</a></li>
+<li><a href="#jie-jue">解决</a></li>
+</ul>
 <!-- tocstop -->
-</div>
+<p></p></div><p></p>
+<h3><a href="#cuo-wu" class="header-anchor">#</a><span id="cuo-wu">错误</span></h3><p>证书错误<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br><span class="line"><span class="comment">//出错提示</span></span><br><span class="line">UNABLE_TO_VERIFY_LEAF_SIGNATURE</span><br><span class="line">UNABLE_TO_VERIFY_LEAF_SIGNATURE</span><br><span class="line">unable to verify the first certificate<span class="comment">//无法验证第一证书</span></span><br></pre></td></tr></table></figure></p>
+<h3><a href="#jie-jue" class="header-anchor">#</a><span id="jie-jue">解决</span></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//因为npm install走的是https协议，需要通过数字证书来保证的，</span></span><br><span class="line"><span class="comment">//所以，取消ssl验证</span></span><br><span class="line">npm config <span class="keyword">set</span> strict-ssl false</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://keoy.xyz/2018/11/20/test/" data-id="cjsvz0j3g0009t8kpdupwab5v" class="article-share-link">Share</a>
+      <a data-url="https://keoy.xyz/2019/03/06/npm_eroor/" data-id="cjsvz0j1o0000t8kpopjpnqs9" class="article-share-link">Share</a>
       
     </footer>
 
@@ -78,15 +83,11 @@
     
   <nav class="article-nav">
     
-      <a href="/2018/11/24/Sokoban/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer posts</strong>
-        <div class="article-nav-title">
-          
-            javascript推箱子
-          
-        </div>
-      </a>
     
+      <a href="/2019/02/22/promiss/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">Promise对象入门</div>
+      </a>
     
   </nav>
 
