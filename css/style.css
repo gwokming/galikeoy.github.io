@@ -1404,6 +1404,10 @@ body {
   word-wrap: break-word;
   color: #999;
 }
+.article-entry .toc-ul ul li ul {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
 .article-header h1,
 .article-header h2 {
   margin: 0;

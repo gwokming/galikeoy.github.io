@@ -2,23 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://keoy.xyz/2019/02/15/FileReader/</loc>
+    
+    <lastmod>2019-03-10T16:44:41.299Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://keoy.xyz/2018/11/20/test/</loc>
+    
+    <lastmod>2019-03-10T16:22:09.331Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://keoy.xyz/2019/02/22/promise/</loc>
     
-    <lastmod>2019-03-09T11:25:00.919Z</lastmod>
+    <lastmod>2019-03-10T16:22:02.179Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://keoy.xyz/2019/03/06/npm_eroor/</loc>
     
-    <lastmod>2019-03-09T06:38:54.925Z</lastmod>
+    <lastmod>2019-03-10T16:21:56.867Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://keoy.xyz/2019/02/22/bibao/</loc>
     
-    <lastmod>2019-03-05T16:12:23.219Z</lastmod>
+    <lastmod>2019-03-10T16:21:51.147Z</lastmod>
     
   </url>
   
@@ -26,13 +40,6 @@
     <loc>https://keoy.xyz/2018/11/24/Sokoban/</loc>
     
     <lastmod>2019-03-01T17:04:55.938Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://keoy.xyz/2018/11/20/test/</loc>
-    
-    <lastmod>2019-03-01T16:52:47.817Z</lastmod>
     
   </url>
   

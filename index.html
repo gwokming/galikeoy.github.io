@@ -143,7 +143,7 @@
       
       
       
-        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><hr>
 <p>promise对象可以获取异步操作的消息，提供统一的API,各个异步操作都可以用同样的方法进行处理。<br>promise对象不受外界影响，其有三种状态：<code>pending</code>（进行中）、<code>fulfilled</code>（成功）、<code>rejected</code>（失败），只有异步操作的结果可以决定当前状态，一旦状态改变就不可以再变化，状态改变方向有两种：<code>pending</code> -&gt; <code>fulfilled</code>、<code>pending</code> -&gt; <code>rejected</code><br>promise对象的意义就在于将异步操作以同步操作的流程表达，避免层层嵌套的回调函数  </p>
         
           <a class="article-more-link" href="/2019/02/22/promise/">Read More...</a>
@@ -196,7 +196,7 @@
       
       
       
-        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>最近看到这样一段代码</p>
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>最近看到这样一段代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">n,o</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(o);</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       fun:<span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span>&#123;</span><br><span class="line">           <span class="keyword">return</span> fun(m,n);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = fun(<span class="number">0</span>);a.fun(<span class="number">1</span>);a.fun(<span class="number">2</span>);a.fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> b = fun(<span class="number">0</span>).fun(<span class="number">1</span>).fun(<span class="number">2</span>).fun(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> c = fun(<span class="number">0</span>).fun(<span class="number">1</span>);c.fun(<span class="number">2</span>);c.fun(<span class="number">3</span>);</span><br><span class="line"><span class="comment">//问:三行a,b,c的输出分别是什么？</span></span><br></pre></td></tr></table></figure>
 <p>觉得有点意思，和大家一起来聊聊。<br>我相信如果你不是非常理解JavaScript中的闭包，一定是不想看这段代码的。<br>
         
@@ -206,6 +206,58 @@
     </p></div>
     <footer class="article-footer">
       <a data-url="https://keoy.xyz/2019/02/22/bibao/" data-id="cjsvz0j3c0007t8kpd4tc547j" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        <article id="post-FileReader" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/02/15/FileReader/">js读取input[type=file]图片，以及预览</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/02/15/FileReader/" class="article-date">
+  <time datetime="2019-02-15T11:48:00.000Z" itemprop="datePublished">2019-02-15</time>
+</a>
+        
+      </div>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fileReader/">fileReader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/input-type-file/">input[type=file]</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前为了实现<code>input[type=file]</code>选择图片后实时展示图片，是把图片上传后，后端返回路径再显示<br>感觉多此一举，这样的方法实在太笨了，也太慢了，也就摸索出另一种方法 <code>FileReader</code><br>
+        
+          <a class="article-more-link" href="/2019/02/15/FileReader/">Read More...</a>
+        
+      
+    </p></div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/02/15/FileReader/" data-id="cjt34b8lz0000egkp1md7mi2z" class="article-share-link">Share</a>
       
     </footer>
 

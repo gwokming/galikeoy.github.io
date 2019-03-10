@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="hoGaEDE0Fk">
+  
+  
+    <meta name="keywords" content="keoy">
+  
+  
+    <meta name="description" content="keoy">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    js读取input[type=file]图片，以及预览 |
+    
+    keoy</title>
+  
+    <link rel="shortcut icon" href="/favi.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+    <section class="outer">
+  <article id="post-FileReader" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js读取input[type=file]图片，以及预览
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/02/15/FileReader/" class="article-date">
+  <time datetime="2019-02-15T11:48:00.000Z" itemprop="datePublished">2019-02-15</time>
+</a>
+        
+      </div>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fileReader/">fileReader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/input-type-file/">input[type=file]</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2><a href="#qian-yan" class="header-anchor">#</a><span id="qian-yan">前言</span></h2><p>之前为了实现<code>input[type=file]</code>选择图片后实时展示图片，是把图片上传后，后端返回路径再显示<br>感觉多此一举，这样的方法实在太笨了，也太慢了，也就摸索出另一种方法 <code>FileReader</code><br><a id="more"></a></p>
+<div class="toc-ul">
+
+<!-- toc -->
+<ul>
+<li><a href="#filereader-shu-xing-he-fang-fa">FileReader 属性和方法</a><ul>
+<li><a href="#shu-xing">属性</a></li>
+<li><a href="#shi-jian-chu-li">事件处理</a></li>
+<li><a href="#fang-fa">方法</a></li>
+</ul>
+</li>
+<li><a href="#kai-shi">开始</a><ul>
+<li><a href="#html">html</a></li>
+<li><a href="#js">js</a></li>
+</ul>
+</li>
+<li><a href="#jie-guo">结果</a></li>
+</ul>
+<!-- tocstop -->
+<p></p></div><p></p>
+<h2><a href="#filereader-shu-xing-he-fang-fa" class="header-anchor">#</a><span id="filereader-shu-xing-he-fang-fa">FileReader 属性和方法</span></h2><p>来看下<code>FileReader</code>的属性和方法</p>
+<h3><a href="#shu-xing" class="header-anchor">#</a><span id="shu-xing">属性</span></h3><p><code>FileReader.error</code> <font color="#999" size="1">只读</font><br>一个<code>DOMException</code>，表示在读取文件时发生的错误 。  </p>
+<p><code>FileReader.readyState</code> <font color="#999" size="1">只读</font><br>表示<code>FileReader</code>状态的数字。取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>常量名</th>
+<th style="text-align:center">值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMPTY</td>
+<td style="text-align:center">0</td>
+<td>还没有加载任何数据.</td>
+</tr>
+<tr>
+<td>LOADING</td>
+<td style="text-align:center">1</td>
+<td>数据正在被加载.</td>
+</tr>
+<tr>
+<td>DONE</td>
+<td style="text-align:center">2</td>
+<td>已完成全部的读取请求.</td>
+</tr>
+</tbody>
+</table>
+<p><code>FileReader.result</code> <font color="#999" size="1">只读</font><br>文件的内容。该属性仅在读取操作完成后才有效，数据的格式取决于使用哪个方法来启动读取操作。</p>
+<h3><a href="#shi-jian-chu-li" class="header-anchor">#</a><span id="shi-jian-chu-li">事件处理</span></h3><p><code>FileReader.onabort</code><br>处理abort事件。该事件在读取操作被中断时触发。</p>
+<p><code>FileReader.onerror</code><br>处理error事件。该事件在读取操作发生错误时触发。</p>
+<p><code>FileReader.onload</code><br>处理load事件。该事件在读取操作完成时触发。</p>
+<p><code>FileReader.onloadstart</code><br>处理loadstart事件。该事件在读取操作开始时触发。</p>
+<p><code>FileReader.onloadend</code><br>处理loadend事件。该事件在读取操作结束时（要么成功，要么失败）触发。</p>
+<p><code>FileReader.onprogress</code><br>处理progress事件。该事件在读取Blob时触发。</p>
+<blockquote>
+<p>因为 <code>FileReader</code> 继承自<code>EventTarget</code>，所以所有这些事件也可以通过<code>addEventListener</code>方法使用。</p>
+</blockquote>
+<h3><a href="#fang-fa" class="header-anchor">#</a><span id="fang-fa">方法</span></h3><p><code>FileReader.abort()</code><br>中止读取操作。在返回时，readyState属性为DONE。</p>
+<p><code>FileReader.readAsArrayBuffer()</code><br>开始读取指定的 Blob中的内容, 一旦完成, result 属性中保存的将是被读取文件的 ArrayBuffer 数据对象.</p>
+<p><code>FileReader.readAsBinaryString()</code><br>开始读取指定的Blob中的内容。一旦完成，result属性中将包含所读取文件的原始二进制数据。</p>
+<p><code>FileReader.readAsDataURL()</code><br>开始读取指定的Blob中的内容。一旦完成，result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容。</p>
+<p><code>FileReader.readAsText()</code><br>开始读取指定的Blob中的内容。一旦完成，result属性中将包含一个字符串以表示所读取的文件内容。</p>
+<p>那我们就知道要用到那些事件和方法了</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="noopener">文档来源</a></p>
+</blockquote>
+<h2><a href="#kai-shi" class="header-anchor">#</a><span id="kai-shi">开始</span></h2><h3><a href="#html" class="header-anchor">#</a><span id="html">html</span></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"file"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"img"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3><a href="#js" class="header-anchor">#</a><span id="js">js</span></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#file'</span>).onchange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.files.length)&#123;</span><br><span class="line">        <span class="keyword">let</span> file = <span class="keyword">this</span>.files[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">        <span class="comment">//新建 FileReader 对象</span></span><br><span class="line">        reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="comment">// 当 FileReader 读取文件时候，读取的结果会放在 FileReader.result 属性中</span></span><br><span class="line">          <span class="built_in">document</span>.querySelector(<span class="string">'#img'</span>).src = <span class="keyword">this</span>.result;</span><br><span class="line">          <span class="built_in">document</span>.querySelector(<span class="string">'#text'</span>).innerHTML = <span class="keyword">this</span>.result;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// 设置以什么方式读取文件，这里以base64方式</span></span><br><span class="line">        reader.readAsDataURL(file);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2><a href="#jie-guo" class="header-anchor">#</a><span id="jie-guo">结果</span></h2><p><img src="/images/Snipaste_2019-03-11_00-42-24.png" alt="image"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/02/15/FileReader/" data-id="cjt34b8lz0000egkp1md7mi2z" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/02/22/bibao/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            一道JS闭包面试题
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/11/24/Sokoban/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">javascript推箱子</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '43052217a3a179abc466',
+        clientSecret: 'fefb4f7d965312decd5160f00b5666ce4f2bdd3b',
+        repo: 'galikeoy.github.io',
+        owner: 'galikeoy',
+        admin: ['galikeoy'],
+        // id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: md5(location.pathname),
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+    <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 keoy</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by <a href="https://github.com/zhwangart/hexo-theme-ocean">ocean</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+    </ul>
+  </div>
+  <div class="top-class">
+    <i class="fe fe-upload"></i>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/cover3.png" alt="keoy"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/2019KPI">2019KPI</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
