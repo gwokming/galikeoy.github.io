@@ -41,7 +41,8 @@
     <url>%2F2019%2F02%2F18%2Fcss_flex_layout%2F</url>
     <content type="text"><![CDATA[废话不多说！ flex-内容宽度等分 左右布局，一侧定宽，一侧自适应撑满 未知高宽上下左右居中 #flex-内容宽度等分123456789//css .box &#123; display: flex; &#125; .box div &#123; flex: 1; border: 1px solid red; &#125; 123456//html &lt;div class="box"&gt; &lt;div&gt;1&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;/div&gt; #左右布局，一侧定宽，一侧自适应撑满12345678910111213141516171819202122232425//css html, body &#123; height: 100% &#125; .main &#123; display: flex; height: 100%; &#125; .left, .right &#123; height: 100%; border: 1px solid red; box-sizing: border-box; &#125; .left &#123; width: 300px; &#125; .right &#123; width: 100%; &#125; 12345//html &lt;div class="main"&gt; &lt;div class="left"&gt;固定宽度300px&lt;/div&gt; &lt;div class="right"&gt;自适应宽度&lt;/div&gt; &lt;/div&gt; #未知高宽上下左右居中1234567891011121314151617//css html, body &#123; height: 100% &#125; .main &#123; display: flex; height: 100%; justify-content: center; align-items: center &#125; .box &#123; width: 300px; border: 1px solid red; &#125; 1234//html &lt;div class="main"&gt; &lt;div class="box"&gt;未知高度上下左右居中&lt;/div&gt;&lt;/div&gt;]]></content>
       <tags>
-        <tag>javascript</tag>
+        <tag>css</tag>
+        <tag>flex</tag>
       </tags>
   </entry>
   <entry>
