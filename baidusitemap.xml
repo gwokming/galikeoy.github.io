@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://keoy.xyz/2019/02/18/css_flex_layout/</loc>
+    <lastmod>2019-03-11</lastmod>
+  </url>  <url>
+    <loc>https://keoy.xyz/2019/02/18/css_layout_three_column/</loc>
+    <lastmod>2019-03-11</lastmod>
+  </url>  <url>
+    <loc>https://keoy.xyz/2019/02/16/Phrase/</loc>
+    <lastmod>2019-03-11</lastmod>
+  </url>  <url>
     <loc>https://keoy.xyz/2019/02/15/FileReader/</loc>
-    <lastmod>2019-03-10</lastmod>
+    <lastmod>2019-03-11</lastmod>
   </url>  <url>
     <loc>https://keoy.xyz/2018/11/20/test/</loc>
     <lastmod>2019-03-10</lastmod>

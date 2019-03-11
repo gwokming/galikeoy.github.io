@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="hoGaEDE0Fk">
+  
+  
+    <meta name="keywords" content="keoy">
+  
+  
+    <meta name="description" content="keoy">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    javascript | 两数相除 |
+    
+    keoy</title>
+  
+    <link rel="shortcut icon" href="/favi.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+    <section class="outer">
+  <article id="post-Phrase" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript | 两数相除
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/02/16/Phrase/" class="article-date">
+  <time datetime="2019-02-16T12:11:00.000Z" itemprop="datePublished">2019-02-16</time>
+</a>
+        
+      </div>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>给定两个整数，被除数<code>dividend</code>和除数<code>divisor</code>。将两数相除，要求不使用乘法、除法和 <code>mod</code> 运算符。</p>
+<p>返回被除数<code>dividend</code>除以除数<code>divisor</code>得到的商。<br><a id="more"></a></p>
+<div class="toc-ul">
+
+<!-- toc -->
+<ul>
+<li><a href="#shi-li">示例</a></li>
+<li><a href="#shuo-ming">说明</a></li>
+<li><a href="#da-an-can-kao">答案参考</a></li>
+</ul>
+<!-- tocstop -->
+<p></p></div><p></p>
+<h2><a href="#shi-li" class="header-anchor">#</a><span id="shi-li">示例</span></h2><p>示例 1:</p>
+<blockquote>
+<p><code>输入: dividend = 10, divisor = 3</code><br><code>输出: 3</code></p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p><code>输入: dividend = 7, divisor = -3</code><br><code>输出: -2</code></p>
+</blockquote>
+<h2><a href="#shuo-ming" class="header-anchor">#</a><span id="shuo-ming">说明</span></h2><p>被除数和除数均为<code>32</code>位有符号整数。<br>除数不为<code>0</code>。<br>假设我们的环境只能存储<code>32</code>位有符号整数，其数值范围是<code>[−2^31, 2^31 − 1]</code>。本题中，如果除法结果溢出，则返回<code>2^31 − 1</code>。</p>
+<h2><a href="#da-an-can-kao" class="header-anchor">#</a><span id="da-an-can-kao">答案参考</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; dividend</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; divisor</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> divide = <span class="function"><span class="keyword">function</span> (<span class="params">dividend, divisor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span>, sign = <span class="number">1</span>, mul = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> ((dividend &gt; <span class="number">0</span> &amp;&amp; divisor &lt; <span class="number">0</span>) || (dividend &lt; <span class="number">0</span> &amp;&amp; divisor &gt; <span class="number">0</span>)) &#123;</span><br><span class="line">        sign = <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dividend = <span class="built_in">Math</span>.abs(dividend);</span><br><span class="line">    divisor = <span class="built_in">Math</span>.abs(divisor);</span><br><span class="line"> </span><br><span class="line">    divisor2 = divisor;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span> (dividend &gt;= divisor2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dividend &gt; (divisor2 + divisor2)) &#123;</span><br><span class="line">            divisor2 += divisor2;</span><br><span class="line">            mul += mul;</span><br><span class="line">        &#125;</span><br><span class="line">        dividend -= divisor2;</span><br><span class="line">        result += mul;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (dividend &gt;= divisor) &#123;</span><br><span class="line">        dividend -= divisor;</span><br><span class="line">        result += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (sign == <span class="number">1</span> &amp;&amp; result &gt; (<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">31</span>) - <span class="number">1</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">31</span>) - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sign == <span class="number">-1</span> &amp;&amp; result &lt; -<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">31</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">31</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (sign == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/02/16/Phrase/" data-id="cjt3yk40m00008ckp6pjnnk8p" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/02/18/css_flex_layout/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            css | flex常见面试题
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/02/15/FileReader/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">js读取input[type=file]图片，以及预览</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '43052217a3a179abc466',
+        clientSecret: 'fefb4f7d965312decd5160f00b5666ce4f2bdd3b',
+        repo: 'galikeoy.github.io',
+        owner: 'galikeoy',
+        admin: ['galikeoy'],
+        // id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: md5(location.pathname),
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+    <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 keoy</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by <a href="https://github.com/zhwangart/hexo-theme-ocean">ocean</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+    </ul>
+  </div>
+  <div class="top-class">
+    <i class="fe fe-upload"></i>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/cover3.png" alt="keoy"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/2019KPI">2019KPI</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

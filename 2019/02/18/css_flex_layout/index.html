@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="hoGaEDE0Fk">
+  
+  
+    <meta name="keywords" content="keoy">
+  
+  
+    <meta name="description" content="keoy">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    css | flex常见面试题 |
+    
+    keoy</title>
+  
+    <link rel="shortcut icon" href="/favi.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+    <section class="outer">
+  <article id="post-css_flex_layout" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css | flex常见面试题
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/02/18/css_flex_layout/" class="article-date">
+  <time datetime="2019-02-18T00:01:00.000Z" itemprop="datePublished">2019-02-18</time>
+</a>
+        
+      </div>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>废话不多说！<br><a id="more"></a></p>
+<div class="toc-ul">
+
+<!-- toc -->
+<ul>
+<li><a href="#flex-nei-rong-kuan-du-deng-fen">flex-内容宽度等分</a></li>
+<li><a href="#zuo-you-bu-ju-yi-ce-ding-kuan-yi-ce-zi-gua-ying-cheng-man">左右布局，一侧定宽，一侧自适应撑满</a></li>
+<li><a href="#wei-zhi-gao-kuan-shang-xia-zuo-you-ju-zhong">未知高宽上下左右居中</a></li>
+</ul>
+<!-- tocstop -->
+<p></p></div><p></p>
+<h2><a href="#flex-nei-rong-kuan-du-deng-fen" class="header-anchor">#</a><span id="flex-nei-rong-kuan-du-deng-fen">flex-内容宽度等分</span></h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//css</span><br><span class="line">       <span class="selector-class">.box</span> &#123;</span><br><span class="line">            <span class="attribute">display</span>: flex;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="selector-class">.box</span> <span class="selector-tag">div</span> &#123;</span><br><span class="line">            <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//html</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/15081804-fad92597fd3fe0ca.png" alt="img"></p>
+<h2><a href="#zuo-you-bu-ju-yi-ce-ding-kuan-yi-ce-zi-gua-ying-cheng-man" class="header-anchor">#</a><span id="zuo-you-bu-ju-yi-ce-ding-kuan-yi-ce-zi-gua-ying-cheng-man">左右布局，一侧定宽，一侧自适应撑满</span></h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//css</span><br><span class="line">        <span class="selector-tag">html</span>,</span><br><span class="line">        <span class="selector-tag">body</span> &#123;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100%</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="selector-class">.main</span> &#123;</span><br><span class="line">            <span class="attribute">display</span>: flex;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="selector-class">.left</span>,</span><br><span class="line">        <span class="selector-class">.right</span> &#123;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">            <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="selector-class">.left</span> &#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="selector-class">.right</span> &#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//html</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>固定宽度300px<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>自适应宽度<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/15081804-83a10fc0764b1fe4.png" alt="img"></p>
+<h2><a href="#wei-zhi-gao-kuan-shang-xia-zuo-you-ju-zhong" class="header-anchor">#</a><span id="wei-zhi-gao-kuan-shang-xia-zuo-you-ju-zhong">未知高宽上下左右居中</span></h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//css</span><br><span class="line">        <span class="selector-tag">html</span>,</span><br><span class="line">        <span class="selector-tag">body</span> &#123;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100%</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="selector-class">.main</span> &#123;</span><br><span class="line">            <span class="attribute">display</span>: flex;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">            <span class="attribute">justify-content</span>: center;</span><br><span class="line">            <span class="attribute">align-items</span>: center</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="selector-class">.box</span> &#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//html</span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span>未知高度上下左右居中<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/Snipaste_2019-03-12_01-00-41.png" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/02/18/css_flex_layout/" data-id="cjt4l4kyg000g8ckpok83ajzc" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/02/18/css_layout_three_column/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            css | 三栏布局
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/02/16/Phrase/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">javascript | 两数相除</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '43052217a3a179abc466',
+        clientSecret: 'fefb4f7d965312decd5160f00b5666ce4f2bdd3b',
+        repo: 'galikeoy.github.io',
+        owner: 'galikeoy',
+        admin: ['galikeoy'],
+        // id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: md5(location.pathname),
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+    <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 keoy</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by <a href="https://github.com/zhwangart/hexo-theme-ocean">ocean</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+    </ul>
+  </div>
+  <div class="top-class">
+    <i class="fe fe-upload"></i>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/cover3.png" alt="keoy"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/2019KPI">2019KPI</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

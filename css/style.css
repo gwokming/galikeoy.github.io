@@ -1307,7 +1307,8 @@ body {
   overflow: hidden;
 }
 .search-result-list li em.search-keyword {
-  color: #9e6a4d;
+  color: #1000ff;
+  background: rgba(0,0,0,0.2);
 }
 .search-result-empty {
   padding: 3rem 0 0;
