@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="hoGaEDE0Fk">
+  
+  
+    <meta name="keywords" content="keoy">
+  
+  
+    <meta name="description" content="keoy">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    javascript | 提取JSON值为纯数组，键为title |
+    
+    keoy</title>
+  
+    <link rel="shortcut icon" href="/favi.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+    <section class="outer">
+  <article id="post-arrayToJson" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript | 提取JSON值为纯数组，键为title
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/03/26/arrayToJson/" class="article-date">
+  <time datetime="2019-03-26T14:54:00.000Z" itemprop="datePublished">2019-03-26</time>
+</a>
+        
+      </div>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2><a href="#xu-qiu" class="header-anchor">#</a><span id="xu-qiu">需求</span></h2><p>Json对象提取值储存纯数组，提取键做title，为上一文章导出Excel作数据<br><a id="more"></a></p>
+<div class="toc-ul">
+
+<!-- toc -->
+<ul>
+<li><a href="#javascript">javascript</a></li>
+<li><a href="#jie-guo">结果</a></li>
+</ul>
+<!-- tocstop -->
+<p></p></div><p></p>
+<h2><a href="#javascript" class="header-anchor">#</a><span id="javascript">javascript</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* @param &#123; JSONObject:[obj,obj,obj] &#125;</span></span><br><span class="line"><span class="comment">* @return &#123; Array &#125;</span></span><br><span class="line"><span class="comment">* </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">JSONToArray</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">JSONToArray.prototype = &#123;</span><br><span class="line">	count: <span class="number">0</span>,</span><br><span class="line">	_init: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(data)</span><br><span class="line">		<span class="keyword">if</span>(navigator.userAgent.indexOf(<span class="string">'MSIE'</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">this</span>._getIEObjLength(data);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>._go(data);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">this</span>.count = <span class="built_in">Object</span>.keys(data[<span class="number">0</span>]).length;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="keyword">this</span>._go(data))</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>._go(data);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	_go: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> valArr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">		<span class="keyword">var</span> keyArr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">       		valArr[i] = [];</span><br><span class="line">	        <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> data[i])&#123;</span><br><span class="line">		       	valArr[i].push(data[i][k]);</span><br><span class="line">		       	<span class="keyword">if</span>(keyArr.length &lt; <span class="keyword">this</span>.count)&#123;</span><br><span class="line">		       		keyArr.push(k);</span><br><span class="line">		       	&#125;</span><br><span class="line">	       &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       valArr.unshift(keyArr);</span><br><span class="line">       <span class="keyword">return</span> valArr;</span><br><span class="line">	&#125;,</span><br><span class="line">	_getIEObjLength: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> o <span class="keyword">in</span> data[<span class="number">0</span>])&#123;</span><br><span class="line">			<span class="keyword">this</span>.count ++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><a href="#jie-guo" class="header-anchor">#</a><span id="jie-guo">结果</span></h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//原数据</span><br><span class="line">[</span><br><span class="line">	&#123;<span class="attr">"id"</span>:<span class="number">10000</span>,<span class="attr">"username"</span>:<span class="string">"user-0"</span>,<span class="attr">"sex"</span>:<span class="string">"女"</span>,<span class="attr">"city"</span>:<span class="string">"城市-0"</span>,<span class="attr">"sign"</span>:<span class="string">"签名-0"</span>,<span class="attr">"experience"</span>:<span class="number">255</span>,<span class="attr">"logins"</span>:<span class="number">24</span>&#125;,</span><br><span class="line">	&#123;<span class="attr">"id"</span>:<span class="number">10001</span>,<span class="attr">"username"</span>:<span class="string">"user-1"</span>,<span class="attr">"sex"</span>:<span class="string">"男"</span>,<span class="attr">"city"</span>:<span class="string">"城市-1"</span>,<span class="attr">"sign"</span>:<span class="string">"签名-1"</span>,<span class="attr">"experience"</span>:<span class="number">884</span>,<span class="attr">"logins"</span>:<span class="number">58</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">//处理后</span><br><span class="line">[</span><br><span class="line">	[<span class="string">"id"</span>,<span class="string">"username"</span>,<span class="string">"sex"</span>,<span class="string">"city"</span>,<span class="string">"sign"</span>,<span class="string">"experience"</span>,<span class="string">"logins"</span>],</span><br><span class="line">	[<span class="number">10000</span>,<span class="string">"user-0"</span>,<span class="string">"女"</span>,<span class="string">"城市-0"</span>,<span class="string">"签名-0"</span>,<span class="number">255</span>,<span class="number">24</span>],</span><br><span class="line">	[<span class="number">10001</span>,<span class="string">"user-1"</span>,<span class="string">"男"</span>,<span class="string">"城市-1"</span>,<span class="string">"签名-1"</span>,<span class="number">884</span>,<span class="number">58</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>兼容<code>ie6-11</code></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/03/26/arrayToJson/" data-id="cjtpyd5xx0001lskpdbiaq1y1" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/03/24/jsonToExcel/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">javascript | JSON导出Excel</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '43052217a3a179abc466',
+        clientSecret: 'fefb4f7d965312decd5160f00b5666ce4f2bdd3b',
+        repo: 'galikeoy.github.io',
+        owner: 'galikeoy',
+        admin: ['galikeoy'],
+        // id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: md5(location.pathname),
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+    <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 keoy</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by <a href="https://github.com/zhwangart/hexo-theme-ocean">ocean</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+    </ul>
+  </div>
+  <div class="top-class">
+    <i class="fe fe-upload"></i>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/cover3.png" alt="keoy"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/2019KPI">2019KPI</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

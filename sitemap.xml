@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://keoy.xyz/2019/03/24/jsonToExcel/</loc>
+    
+    <lastmod>2019-03-26T16:14:55.854Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://keoy.xyz/2019/03/26/arrayToJson/</loc>
+    
+    <lastmod>2019-03-26T16:14:49.471Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://keoy.xyz/2019/02/18/css_flex_layout/</loc>
     
     <lastmod>2019-03-11T17:04:26.444Z</lastmod>

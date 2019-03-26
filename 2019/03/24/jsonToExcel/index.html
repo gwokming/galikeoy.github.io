@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="hoGaEDE0Fk">
+  
+  
+    <meta name="keywords" content="keoy">
+  
+  
+    <meta name="description" content="keoy">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    javascript | JSON导出Excel |
+    
+    keoy</title>
+  
+    <link rel="shortcut icon" href="/favi.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+    <section class="outer">
+  <article id="post-jsonToExcel" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript | JSON导出Excel
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/03/24/jsonToExcel/" class="article-date">
+  <time datetime="2019-03-24T15:23:00.000Z" itemprop="datePublished">2019-03-24</time>
+</a>
+        
+      </div>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FileSaver-js/">FileSaver.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/excel/">excel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2><a href="#xu-qiu" class="header-anchor">#</a><span id="xu-qiu">需求</span></h2><p>最近后端返回了一段json对象数据，要求导出Excel,同时兼容IE8，这可让我郁闷了<br>查了一下大多数插件，都只是兼容到ie9，<code>本贴代码已测试，兼容ie6-11</code><br>那下面就让我们来会会这狗屎一样的IE吧<br><a id="more"></a></p>
+<div class="toc-ul">
+
+<!-- toc -->
+<ul>
+<li><a href="#gong-ju">工具</a></li>
+<li><a href="#dai-ma">代码</a></li>
+<li><a href="#diao-yong">调用</a></li>
+<li><a href="#wen-ti">问题</a></li>
+</ul>
+<!-- tocstop -->
+<p></p></div><p></p>
+<h2><a href="#gong-ju" class="header-anchor">#</a><span id="gong-ju">工具</span></h2><p>使用了 <a href="https://github.com/eligrey/FileSaver.js" target="_blank" rel="noopener">FileSaver.js</a> &amp; <a href="https://github.com/eligrey/Blob.js" target="_blank" rel="noopener">Blob.js</a></p>
+<h2><a href="#dai-ma" class="header-anchor">#</a><span id="dai-ma">代码</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">var</span> EXCEL_CONTENTTYPE = <span class="string">"application/vnd.ms-excel;"</span>,</span><br><span class="line">          EXCEL_URI = <span class="string">'data:application/vnd.ms-excel;base64,'</span>,</span><br><span class="line">          EXCE_TEMPLATE = <span class="string">'&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;&lt;body&gt;&#123;html&#125;&lt;/body&gt;&lt;/html&gt;'</span>,</span><br><span class="line">          __PREVFIX = <span class="string">"\uFEFF"</span>,</span><br><span class="line">          ieVersion = <span class="built_in">window</span>.navigator.userAgent.toLowerCase().match(<span class="regexp">/(msie\s|trident.*rv:)([\w.]+)/</span>),</span><br><span class="line">          useIE = ieVersion &amp;&amp; ieVersion[<span class="number">2</span>] &lt; <span class="number">10</span>,</span><br><span class="line">          isIE1011 = ieVersion &amp;&amp; ieVersion[<span class="number">2</span>] &gt; <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">var</span> Export = &#123;</span><br><span class="line">          <span class="comment">/*</span></span><br><span class="line"><span class="comment">          *@param datas Two-dimensional array : datas, export only with data</span></span><br><span class="line"><span class="comment">                            or String : DOM id, export html content</span></span><br><span class="line"><span class="comment">          *@param fileName export file name</span></span><br><span class="line"><span class="comment">          */</span></span><br><span class="line">          toExcel: <span class="function"><span class="keyword">function</span>(<span class="params">datas, fName</span>)</span>&#123;</span><br><span class="line">               <span class="keyword">var</span> isId = <span class="keyword">typeof</span> datas === <span class="string">'string'</span>;</span><br><span class="line">               <span class="keyword">if</span>(isId || datas <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(useIE || isId &amp;&amp; isIE1011)&#123;</span><br><span class="line">                         Export.__ieExport(datas);</span><br><span class="line">                    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                         Export.__oTherExport(datas, fName);</span><br><span class="line">                    &#125;              </span><br><span class="line">               &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    alert(<span class="string">"datas params need Two-dimensional array or String."</span>);</span><br><span class="line">               &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          __ieExport : <span class="function"><span class="keyword">function</span>(<span class="params">datas</span>)</span>&#123;</span><br><span class="line">             </span><br><span class="line">                <span class="keyword">var</span> oXL = <span class="keyword">new</span> ActiveXObject(<span class="string">"Excel.Application"</span>),</span><br><span class="line">                oWB = oXL.Workbooks.Add(),</span><br><span class="line">                oSheet = oWB.ActiveSheet,</span><br><span class="line">                    i = <span class="number">0</span>,</span><br><span class="line">                    j; </span><br><span class="line"></span><br><span class="line">               <span class="keyword">if</span>(<span class="keyword">typeof</span> datas === <span class="string">'string'</span>)&#123;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">var</span> elem = <span class="built_in">document</span>.getElementById(datas); </span><br><span class="line">                   <span class="keyword">var</span> sel = <span class="built_in">document</span>.body.createTextRange(); </span><br><span class="line">                    sel.moveToElementText(elem); </span><br><span class="line">                    <span class="keyword">try</span>&#123;</span><br><span class="line">                         sel.select(); </span><br><span class="line">                        <span class="comment">//there ie10、11 will be error, i don't know why, but also can export</span></span><br><span class="line">                    &#125; <span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">                    sel.execCommand(<span class="string">"Copy"</span>); </span><br><span class="line">                    oSheet.Paste();</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span>(; i &lt; datas.length; i++)&#123;  </span><br><span class="line">                         <span class="keyword">var</span> row = datas[i]; </span><br><span class="line">                         <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; row.length; j++) &#123; </span><br><span class="line">                              oSheet.Cells(i + <span class="number">1</span>, j + <span class="number">1</span>).value = row[j]; </span><br><span class="line">      </span><br><span class="line">                         &#125;   </span><br><span class="line">                    &#125;                </span><br><span class="line">               &#125;  </span><br><span class="line">            oXL.Visible = <span class="literal">true</span>;           </span><br><span class="line">          &#125;,</span><br><span class="line">          __oTherExport : <span class="function"><span class="keyword">function</span>(<span class="params">datas, fileName</span>)</span>&#123;</span><br><span class="line">                                  </span><br><span class="line">               <span class="keyword">if</span>(<span class="keyword">typeof</span> datas === <span class="string">'string'</span>)&#123;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">var</span> elem = <span class="built_in">document</span>.getElementById(datas),</span><br><span class="line">                         content = EXCE_TEMPLATE.replace(<span class="string">"&#123;html&#125;"</span>, elem.outerHTML);</span><br><span class="line">                    <span class="comment">//<span class="doctag">TODO:</span> need test large amount of data</span></span><br><span class="line">                    <span class="built_in">window</span>.location.href = EXCEL_URI +</span><br><span class="line">                        <span class="built_in">window</span>.btoa(<span class="built_in">unescape</span>(<span class="built_in">encodeURIComponent</span>(content)));                   </span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">var</span> blob,</span><br><span class="line">                         i = <span class="number">0</span>,</span><br><span class="line">                         j,</span><br><span class="line">                         str = __PREVFIX; </span><br><span class="line"></span><br><span class="line">                    <span class="keyword">for</span>(; i &lt; datas.length; i++)&#123;  </span><br><span class="line">                         <span class="keyword">var</span> row = datas[i]; </span><br><span class="line">                         <span class="comment">// the value add double quotation marks on both sides, for separate values.</span></span><br><span class="line">                         str += <span class="string">"\""</span>+ row.join(<span class="string">"\",\""</span>) + <span class="string">"\"\n"</span>; </span><br><span class="line">                    &#125; </span><br><span class="line">                    <span class="comment">//on safari:  TypeError: '[object BlobConstructor]' is not a constructor (evaluating 'new Blob([str],&#123;</span></span><br><span class="line">                    <span class="comment">//import Blob.js to fix, but still have a problem : the fileName will be 'Unknown' ,</span></span><br><span class="line">                    <span class="comment">//but if you add suffix name, content can be seen.</span></span><br><span class="line">                    blob = <span class="keyword">new</span> Blob([str],&#123;</span><br><span class="line">                         type: EXCEL_CONTENTTYPE</span><br><span class="line">                    &#125;);</span><br><span class="line">                    saveAs(blob, fileName || <span class="string">"Download.xls"</span>);    </span><br><span class="line">               &#125;</span><br><span class="line">          &#125;    </span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="built_in">window</span>.ExportUtil = Export;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h2><a href="#diao-yong" class="header-anchor">#</a><span id="diao-yong">调用</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据方式</span></span><br><span class="line">ExportUtil.toExcel([</span><br><span class="line">               [<span class="string">"学号"</span>, <span class="string">"姓名"</span>, <span class="string">"年龄"</span>],</span><br><span class="line">               [<span class="string">"1"</span>, <span class="string">"haha"</span>, <span class="string">"19"</span>],</span><br><span class="line">               [<span class="string">"2"</span>, <span class="string">"heihei"</span>, <span class="string">"10"</span>],</span><br><span class="line">               [<span class="string">"3"</span>, <span class="string">"lolo"</span>, <span class="string">"23"</span>]</span><br><span class="line">          ],<span class="string">"test.xls"</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">//table方式</span></span><br><span class="line">ExportUtil.toExcel(<span class="string">"id"</span>); <span class="comment">//id为table的id</span></span><br></pre></td></tr></table></figure>
+<h2><a href="#wen-ti" class="header-anchor">#</a><span id="wen-ti">问题</span></h2><ul>
+<li>由于没有<code>safari</code>的需求，<code>safari</code>兼容性请自测</li>
+<li>建议用数据方式导出，HTML标签方式效果不太好</li>
+</ul>
+<blockquote>
+<p>参考 <a href="https://github.com/codingforme/code-learn" target="_blank" rel="noopener">github</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://keoy.xyz/2019/03/24/jsonToExcel/" data-id="cjtpyvuia0006lskpvsoxjsza" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/03/26/arrayToJson/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            javascript | 提取JSON值为纯数组，键为title
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/03/06/npm_eroor/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">npm采踩坑系列</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '43052217a3a179abc466',
+        clientSecret: 'fefb4f7d965312decd5160f00b5666ce4f2bdd3b',
+        repo: 'galikeoy.github.io',
+        owner: 'galikeoy',
+        admin: ['galikeoy'],
+        // id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: md5(location.pathname),
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+    <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 keoy</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by <a href="https://github.com/zhwangart/hexo-theme-ocean">ocean</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+    </ul>
+  </div>
+  <div class="top-class">
+    <i class="fe fe-upload"></i>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/cover3.png" alt="keoy"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/2019KPI">2019KPI</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
